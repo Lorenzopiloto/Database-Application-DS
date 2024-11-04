@@ -76,7 +76,6 @@
 # print(meuDicionario)
 # meuDicionario.update({'estado civil':'casada'})
 # print(meuDicionario)
-#
 # print('\nApagando itens')
 # print('Funcao NATIVA DEL')
 # del meuDicionario['estado civil']
@@ -95,7 +94,7 @@
 #     print('Tem idade nas chaves do meu dicionario')
 # if 'Patricia Angelini' in meuDicionario.values():
 #     print('Pat esta la')
-# if 'idade' in meuDicionario:
+# if 'idade' in meuDicionario:   
 #     print('A idade é:',meuDicionario['idade'])
 
 
