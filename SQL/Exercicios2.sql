@@ -1,6 +1,6 @@
 /*
 1. Escreva um Procedure PR_RECUPERALIVROS que recupere odos os livros da tabela TB_S_LIVROS
-e exiba na tela. Trate a exceÁ„o se n„ houver dados na tabela
+e exiba na tela. Trate a exce√ß√£o se n√£ houver dados na tabela
 */
 
 -- Habilitar o Server Output para exibir os dados na tela
@@ -11,7 +11,7 @@ SET SERVEROUTPUT ON;
 
 CREATE OR REPLACE PROCEDURE PR_RECUPERALIVROS AS
 
-    -- Vari·veis para armazenar os dados dos livros
+    -- Vari√°veis para armazenar os dados dos livros
 
     CURSOR c_livros IS
 
@@ -45,23 +45,23 @@ BEGIN
  
         -- Exibir cada registro no console
 
-        DBMS_OUTPUT.PUT_LINE('CÛdigo: ' || v_cd_codigo || 
+        DBMS_OUTPUT.PUT_LINE('C√≥digo: ' || v_cd_codigo || 
 
-                             ', TÌtulo: ' || v_tx_titulo || 
+                             ', T√≠tulo: ' || v_tx_titulo || 
 
-                             ', P·ginas: ' || COALESCE(TO_CHAR(v_nr_numero_paginas), 'N/A') || 
+                             ', P√°ginas: ' || COALESCE(TO_CHAR(v_nr_numero_paginas), 'N/A') || 
 
                              ', Ano: ' || COALESCE(TO_CHAR(v_nr_ano_publicacao), 'N/A') || 
 
-                             ', EdiÁ„o: ' || COALESCE(TO_CHAR(v_nr_edicao), 'N/A') || 
+                             ', Edi√ß√£o: ' || COALESCE(TO_CHAR(v_nr_edicao), 'N/A') || 
 
-                             ', CÛdigo Autor: ' || COALESCE(TO_CHAR(v_cd_codigo_autor), 'N/A'));
+                             ', C√≥digo Autor: ' || COALESCE(TO_CHAR(v_cd_codigo_autor), 'N/A'));
 
     END LOOP;
 
     CLOSE c_livros;
  
-    -- Caso a tabela n„o tenha registros, levantar uma exceÁ„o
+    -- Caso a tabela n√£o tenha registros, levantar uma exce√ß√£o
 
     IF c_livros%ROWCOUNT = 0 THEN
 
@@ -71,7 +71,7 @@ BEGIN
  
 EXCEPTION
 
-    -- Tratamento de exceÁ„o caso ocorra algum erro
+    -- Tratamento de exce√ß√£o caso ocorra algum erro
 
     WHEN NO_DATA_FOUND THEN
 
@@ -92,13 +92,13 @@ EXEC PR_RECUPERALIVROS;
 /
 
 /*
-2. Escreva uma funÁ„o que retorne o nome da livraria da tabela T_BS_LIVRARIA
+2. Escreva uma fun√ß√£o que retorne o nome da livraria da tabela T_BS_LIVRARIA
 quando for passado o nome exato do bairro;
 */
  
  SET SERVEROUTPUT ON 
 
--- Criar a funÁ„o para retornar o nome da livraria pelo nome exato do bairro
+-- Criar a fun√ß√£o para retornar o nome da livraria pelo nome exato do bairro
 
 CREATE OR REPLACE FUNCTION FN_RECUPERAR_NOME_LIVRARIA(p_bairro IN VARCHAR2)
 
@@ -120,7 +120,7 @@ BEGIN
 
     WHERE tx_bairro = p_bairro
 
-    AND ROWNUM = 1;  -- Garantir que sÛ um resultado ser· retornado, caso haja duplicidade de bairros
+    AND ROWNUM = 1;  -- Garantir que s√≥ um resultado ser√° retornado, caso haja duplicidade de bairros
 
     -- Retornar o nome da livraria
 
@@ -128,7 +128,7 @@ BEGIN
  
 EXCEPTION
 
-    -- Caso o bairro n„o seja encontrado
+    -- Caso o bairro n√£o seja encontrado
 
     WHEN NO_DATA_FOUND THEN
 
@@ -143,12 +143,12 @@ END FN_RECUPERAR_NOME_LIVRARIA;
 /
  
  
--- Exemplo de uso da funÁ„o para recuperar o nome da livraria pelo bairro "Centro"
+-- Exemplo de uso da fun√ß√£o para recuperar o nome da livraria pelo bairro "Centro"
 
 SELECT FN_RECUPERAR_NOME_LIVRARIA('Paraiso') AS nome_livraria
 
 FROM dual;
  
--- papai, trouxe p„ozinho
+
 
  
